@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
+	public Bank(List<Klient> klienci, String nazwaBanku) {
+		super();
+		this.klienci = klienci;
+		this.nazwaBanku = nazwaBanku;
+	}
 	private List<Klient> klienci = new ArrayList<Klient>();
 	private String nazwaBanku;
 	public List<Klient> getKlienci() {

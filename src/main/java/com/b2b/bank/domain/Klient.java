@@ -1,12 +1,24 @@
 package com.b2b.bank.domain;
 
 public class Klient {
+	public Klient( String nazwisko, double stanKonta) {
+		super();
+		this.nazwisko = nazwisko;
+		this.stanKonta = stanKonta;
+	}
 	private String imie;
 	private String nazwisko;
 	private int rokUrodzenia;
 	private double stanKonta;
 	public double getStanKonta() {
 		return stanKonta;
+	}
+	public Klient(String imie, String nazwisko, int rokUrodzenia, double stanKonta) {
+		super();
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.rokUrodzenia = rokUrodzenia;
+		this.stanKonta = stanKonta;
 	}
 	public void setStanKonta(double stanKonta) {
 		this.stanKonta = stanKonta;
@@ -15,7 +27,11 @@ public class Klient {
 		return imie;
 	}
 	public void setImie(String imie) {
+		if(imie.length() > 2) {
 		this.imie = imie;
+		} else {
+			this.imie = "";
+		}
 	}
 	public String getNazwisko() {
 		return nazwisko;
@@ -27,7 +43,10 @@ public class Klient {
 		return rokUrodzenia;
 	}
 	public void setRokUrodzenia(int rokUrodzenia) {
+		if (rokUrodzenia<1900 || rokUrodzenia>1999) {
+		this.rokUrodzenia = 0;
+	} else {
 		this.rokUrodzenia = rokUrodzenia;
 	}
-
+	}
 }

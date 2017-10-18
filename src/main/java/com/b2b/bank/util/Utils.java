@@ -18,27 +18,20 @@ public class Utils {
 		return "nazwisko";
 	}
 
-	public List<Bank> stworzListeBankow() {
-		List<Bank> banki = new ArrayList<Bank>();
-		boolean czyTworzycBank = true;
-		do {
-			System.out.println("Czy stworzyć bank?");
-			czyTworzycBank = scanner.nextBoolean();
-			if (czyTworzycBank) {
-				Bank bank = new Bank();
-				System.out.println("Podaj nazwe banku");
-				String nazwaBanku = scanner.next();
-				bank.setNazwaBanku(nazwaBanku);
-				System.out.println("uzupełnij klientów bankow");
-				bank.setKlienci(stworzListeKlientow());
-				banki.add(bank);
-			}
-		} while (czyTworzycBank);
-
+	
+	
+	public List<Bank> stworzDomyslnaListeBankow(){
+		List<Bank> banki = new ArrayList<>();
+		List<Klient> klienciMillenium = stworzDomyslnaListeKlientowMillenium();
+		banki.add(new Bank(klienciMillenium, "Millenium"));
+		List<Klient> klienciPkoBp = stworzDomyslnaListeKlientowPkoBp();
+		banki.add(new Bank(klienciPkoBp, "PKO BP"));
+		
+		
 		return banki;
 	}
 
-	public List<Klient> stworzListeKlientow() {
+	/*public List<Klient> stworzListeKlientow() {
 		List<Klient> klienci = new ArrayList<Klient>();
 		boolean czyTworzycKlienta = true;
 		
@@ -68,8 +61,41 @@ public class Utils {
 		} while (czyTworzycKlienta);
 
 		return klienci;
-	}
+	}*/
 
+	public List<Klient> stworzDomyslnaListeKlientowMillenium(){
+		List<Klient> klienci = new ArrayList<>();
+		
+		
+		Klient janek = new Klient( "Kowalski", 213.20);
+		janek.setRokUrodzenia(1984);
+		janek.setImie("Jan");
+		klienci.add(janek);
+		Klient piotrus = new Klient("Malek", 123.20);
+		piotrus.setRokUrodzenia(1976);
+		piotrus.setImie("Piotr");
+		klienci.add(piotrus);
+		
+		
+		return klienci;
+	}
+	public List<Klient> stworzDomyslnaListeKlientowPkoBp(){
+		List<Klient> klienci = new ArrayList<>();
+		
+		
+		Klient Anka = new Klient("Waza", 2160.20);
+		Anka.setRokUrodzenia(1987);
+		Anka.setImie("Anna");
+		klienci.add(Anka);
+		Klient Filipek = new Klient( "Kozak", 1123.20);
+		Filipek.setRokUrodzenia(1989);
+		Filipek.setImie("Filip");
+		klienci.add(Filipek);
+		
+		
+		return klienci;
 	
 
 }
+}
+
